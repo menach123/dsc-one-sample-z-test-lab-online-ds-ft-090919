@@ -20,21 +20,43 @@ Follow the 5 steps shown in previous lesson and use $\alpha$ = 0.05.
 
 ```python
 # State your null and alternative hypotheses
+# Ha: The tested mean order time is greater then the 60 seconds.
+# Ho: The tested mean order time of 75 seconds is equivalent of the 60 second mean order time. 
+```
 
+
+```python
+import math
+import scipy.stats as stats
 ```
 
 
 ```python
 # Your solution here
+test_mean = 75
+mean = 60
+std_ = 30
+customers = 36
+z = (test_mean - mean)/(std_/math.sqrt(customers))
+p = 1 - stats.norm.cdf(z)
+
+p,z
 
 
 # (p = 0.0013498980316301035, z = 3.0)
 ```
 
 
-```python
-# Interpret the results in terms of the p-value
 
+
+    (0.0013498980316301035, 3.0)
+
+
+
+
+```python
+# Reject the null hypothesis because the p-value is less then 0.05. 
+# The chain's claim that the mean order time is 60 second suspect.
 
 ```
 
@@ -56,22 +78,41 @@ Are our 25 students’ SAT scores significantly higher than the population's mea
 
 ```python
 # State your hypotheses 
+# Ha: The students' scores are higher than the population average
+# Ho: The students' scores are not signficantly different then the population average. 
 
 ```
 
 
 ```python
 # Give your solution here 
+import numpy as np 
+test_score = np.array([434, 694, 457, 534, 720, 400, 484, 478, 610, 641, 425, 636, 454,
+514, 563, 370, 499, 640, 501, 625, 612, 471, 598, 509, 531])
 
+test_mean = test_score.mean()
+std_ = 100
+mean = 500
+students = 25
+z = (test_mean - mean)/(std_/math.sqrt(students))
+p = 1 - stats.norm.cdf(z)
 
+p,z
 
 # p = 0.03593031911292577, z = 1.8
 ```
 
 
-```python
-# Interpret the results in terms of the p-value
 
+
+    (0.03593031911292577, 1.8)
+
+
+
+
+```python
+# Reject the null hypothesis because the p-value is less then 0.05. 
+# The student score are higher 
 ```
 
 ## Summary
